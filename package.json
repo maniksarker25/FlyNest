@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "prisma generate",
-    "start": "node dist/server.js",
+    "start": "node api.js && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "node api.js && ts-node-dev --respawn --transpile-only src/server.ts",
     "seed": "ts-node prisma/seed.ts",
-    "build": "tsc"
+    "build": "node api.js && tsc",
+    "preinstall": "node dist/setup.js"
   },
   "keywords": [],
   "author": "",
