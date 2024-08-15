@@ -5,7 +5,7 @@ Implements authentication, role-based access control, and basic modules for mana
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Authentication**
   - User signup & login with hashed passwords
@@ -42,7 +42,7 @@ Implements authentication, role-based access control, and basic modules for mana
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 - Node.js (LTS recommended)
 - npm (or yarn/pnpm)
@@ -51,7 +51,9 @@ Implements authentication, role-based access control, and basic modules for mana
 
 ---
 
-## ⚙️ Installation & Setup
+## Postman Documentation : https://documenter.getpostman.com/view/41728833/2sB3HevQ9L
+
+## Installation & Setup
 
 ### 1) Clone the repo
 
@@ -68,16 +70,16 @@ npm install
 
 ### 3) Configure environment variables
 
-# Application
+### Application
 
 NODE_ENV=development
 PORT=5000
 
-# Database (matches docker-compose.yml)
+### Database (matches docker-compose.yml)
 
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/school_db?schema=public"
 
-# JWT Config
+### JWT Config
 
 JWT_ACCESS_SECRET=your_access_secret
 JWT_REFRESH_SECRET=your_refresh_secret
@@ -86,17 +88,17 @@ JWT_REFRESH_EXPIRES_IN=7d
 
 ### 3) For Start and stop the database:
 
-# Start DB in background
+### Start DB in background
 
 docker-compose up -d
 
-# 4) Stop DB
+### 4) Stop DB
 
 ```bash
 docker-compose up -d
 ```
 
-# 5) Stop and remove volumes (resets DB)
+### 5) Stop and remove volumes (resets DB)
 
 ```bash
 docker-compose down -v
@@ -109,21 +111,21 @@ npx prisma migrate dev
 
 ```
 
-# 7) Generate Prisma client:
+### 7) Generate Prisma client:
 
 ```bash
 npx prisma generate
 
 ```
 
-# 8) Seed the database (optional)
+### 8) Seed the database (optional)
 
 ```bash
 npm run seed
 
 ```
 
-# 9) Start the server
+### 9) Start the server
 
 ```bash
 npm run dev
