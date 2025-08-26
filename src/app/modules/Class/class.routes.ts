@@ -14,4 +14,4 @@ router.post(
   ClassController.createClass
 );
 
-export const userRoutes = router;
+export const classRoutes = router;

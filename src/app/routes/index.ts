@@ -3,6 +3,7 @@ import { userRoutes } from "../modules/User/user.routes";
 import { flatRoutes } from "../modules/Flat/flat.routes";
 import { bookingRoutes } from "../modules/Booking/booking.routes";
 import { metaRoutes } from "../modules/Meta/meta.routes";
+import { studentRoutes } from "../modules/Student/student.routes";
 
 const router = express.Router();
 
@@ -21,6 +22,14 @@ const moduleRoutes = [
   },
   {
     path: "/meta",
+    route: metaRoutes,
+  },
+  {
+    path: "/students",
+    route: studentRoutes,
+  },
+  {
+    path: "/classes",
     route: metaRoutes,
   },
 ];
