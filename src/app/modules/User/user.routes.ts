@@ -8,8 +8,8 @@ import { UserRole } from "@prisma/client";
 const router = express.Router();
 
 router.post(
-  "/register",
-  validateRequest(userValidation.createUserValidationSchema),
+  "/sign-up",
+  validateRequest(userValidation.registerUserValidationSchema),
   userController.registerUser
 );
 

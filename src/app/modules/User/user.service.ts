@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 import prisma from "../../utils/prisma";
-import { User } from "@prisma/client";
+import { Student, User, UserStatus } from "@prisma/client";
 import { TLoginUser } from "./user.interface";
 import config from "../../config";
 import { jwtHelper } from "../../helpers/jwtHelper";
 import AppError from "../../error/appError";
 import httpStatus from "http-status";
-const registerUserIntoDB = async (payload: User) => {
+const registerUserIntoDB = async (payload: User & { age: number }) => {
   const isUserExists = await prisma.user.findUnique({
     where: {
       email: payload.email,
@@ -24,18 +24,14 @@ const registerUserIntoDB = async (payload: User) => {
     const createUser = await transactionClient.user.create({
       data: payload,
     });
-    const profileData = {
+    const studentData = {
       userId: createUser?.id,
-      bio: "",
-      profileImage: "",
-      profession: "",
-      address: "",
-      education: "",
-      phone: "",
-      email: "",
+      name: payload.name,
+      age: Number(payload.age),
+      email: payload.email,
     };
-    await transactionClient.userProfile.create({
-      data: profileData,
+    await transactionClient.student.create({
+      data: studentData,
     });
     return createUser;
   });
