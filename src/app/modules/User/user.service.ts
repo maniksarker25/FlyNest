@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import prisma from "../../utils/prisma";
-import { Student, User, UserStatus } from "@prisma/client";
+import { User, UserStatus } from "@prisma/client";
 import { TLoginUser } from "./user.interface";
 import config from "../../config";
 import { jwtHelper } from "../../helpers/jwtHelper";
@@ -82,8 +82,14 @@ const loginUserIntoDB = async (payload: TLoginUser) => {
     config.jwt_access_secret as string,
     config.jwt_access_expires_in as string
   );
+  const refreshToken = jwtHelper.generateToken(
+    jwtPayload,
+    config.jwt_refresh_secret as string,
+    config.jwt_refresh_expires_in as string
+  );
   return {
-    token: accessToken,
+    accessToken,
+    refreshToken,
   };
 };
 
