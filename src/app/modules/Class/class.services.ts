@@ -38,9 +38,17 @@ const enrollAStudentToClass = async (classId: string, studentId: string) => {
   return result;
 };
 
+const getStudentOfAClass = async (classId: string) => {
+  const students = await prisma.student.findMany({
+    where: { classId },
+  });
+  return students;
+};
+
 export const ClassService = {
   craeteClassIntoDb,
   enrollAStudentToClass,
+  getStudentOfAClass,
 };
 
 export default ClassService;

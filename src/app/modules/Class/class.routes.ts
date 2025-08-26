@@ -19,5 +19,9 @@ router.post(
   auth(UserRole.ADMIN, UserRole.TEACHER),
   ClassController.enrollAStudentToClass
 );
-
+router.get(
+  "/:id/students",
+  auth(UserRole.ADMIN, UserRole.TEACHER),
+  ClassController.getStudentOfAClass
+);
 export const classRoutes = router;
