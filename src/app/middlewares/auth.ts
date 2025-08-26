@@ -11,10 +11,14 @@ import { UserStatus } from "@prisma/client";
 
 const auth = (...requiredRoles: string[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const token = req?.headers?.authorization;
-    // console.log(token);
+    let token = req?.headers?.authorization;
+
     if (!token) {
       throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access");
+    }
+
+    if (token.startsWith("Bearer ")) {
+      token = token.slice(7, token.length);
     }
     let decoded;
 
@@ -36,7 +40,6 @@ const auth = (...requiredRoles: string[]) => {
         status: UserStatus.ACTIVE,
       },
     });
-    // console.log(userInfo);
     if (!userInfo) {
       throw new AppError(httpStatus.UNAUTHORIZED, "You ae unauthorized");
     }
