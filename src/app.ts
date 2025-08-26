@@ -11,14 +11,7 @@ app.use(
     credentials: true,
   })
 );
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//   })
-// );
-// parser ----------------------------------------------------------------
-// make some changes
+
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 
