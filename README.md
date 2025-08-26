@@ -59,3 +59,74 @@ Implements authentication, role-based access control, and basic modules for mana
 git clone https://github.com/your-username/school-management-api.git
 cd school-management-api
 ```
+
+### 2) Install dependencies
+
+```bash
+npm install
+```
+
+### 3) Configure environment variables
+
+# Application
+
+NODE_ENV=development
+PORT=5000
+
+# Database (matches docker-compose.yml)
+
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/school_db?schema=public"
+
+# JWT Config
+
+JWT_ACCESS_SECRET=your_access_secret
+JWT_REFRESH_SECRET=your_refresh_secret
+JWT_ACCESS_EXPIRES_IN=15m
+JWT_REFRESH_EXPIRES_IN=7d
+
+### 3) For Start and stop the database:
+
+# Start DB in background
+
+docker-compose up -d
+
+# 4) Stop DB
+
+```bash
+docker-compose up -d
+```
+
+# 5) Stop and remove volumes (resets DB)
+
+```bash
+docker-compose down -v
+```
+
+### 6) Run Prisma migrations
+
+```bash
+npx prisma migrate dev
+
+```
+
+# 7) Generate Prisma client:
+
+```bash
+npx prisma generate
+
+```
+
+# 8) Seed the database (optional)
+
+```bash
+npm run seed
+
+```
+
+# 9) Start the server
+
+```bash
+npm run dev
+
+
+```
