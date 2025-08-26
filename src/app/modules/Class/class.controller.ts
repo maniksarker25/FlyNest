@@ -12,9 +12,22 @@ const createClass = catchAsync(async (req, res) => {
     data: result,
   });
 });
+const enrollAStudentToClass = catchAsync(async (req, res) => {
+  const result = await ClassService.enrollAStudentToClass(
+    req.params.id,
+    req.body.studentId
+  );
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Student enrolled successfully",
+    data: result,
+  });
+});
 
 const ClassController = {
   createClass,
+  enrollAStudentToClass,
 };
 
 export default ClassController;

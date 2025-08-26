@@ -8,10 +8,16 @@ import { classValidation } from "./class.validation";
 const router = express.Router();
 
 router.post(
-  "/create",
+  "/",
   auth(UserRole.ADMIN),
   validateRequest(classValidation.createClassValidationSchema),
   ClassController.createClass
+);
+
+router.post(
+  "/:id/enroll",
+  auth(UserRole.ADMIN, UserRole.TEACHER),
+  ClassController.enrollAStudentToClass
 );
 
 export const classRoutes = router;
