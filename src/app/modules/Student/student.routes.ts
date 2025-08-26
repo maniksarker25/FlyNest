@@ -14,13 +14,13 @@ router.post(
   studentController.createStudent
 );
 router.get(
-  "/get-all",
+  "/",
   auth(UserRole.ADMIN, UserRole.TEACHER),
   studentController.getAllStudents
 );
 router.get(
-  "/get/:id",
-  auth(UserRole.ADMIN, UserRole.TEACHER),
+  "/:id",
+  auth(UserRole.ADMIN, UserRole.TEACHER, UserRole.STUDENT),
   studentController.getSingleStudent
 );
 
