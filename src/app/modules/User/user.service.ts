@@ -6,7 +6,16 @@ import config from "../../config";
 import { jwtHelper } from "../../helpers/jwtHelper";
 import AppError from "../../error/appError";
 import httpStatus from "http-status";
-const registerUserIntoDB = async (payload: User & { age: number }) => {
+const registerUserIntoDB = async (
+  payload: User & { age: number; password: string; confirmPassword: string }
+) => {
+  const { password, confirmPassword, ...userData } = payload;
+  if (password !== confirmPassword) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      "Password and confirm password doesn't match"
+    );
+  }
   const isUserExists = await prisma.user.findUnique({
     where: {
       email: payload.email,
@@ -22,7 +31,11 @@ const registerUserIntoDB = async (payload: User & { age: number }) => {
 
   const result = await prisma.$transaction(async (transactionClient) => {
     const createUser = await transactionClient.user.create({
-      data: payload,
+      data: {
+        name: payload.name,
+        email: payload.email,
+        password: hashedPassword,
+      },
     });
     const studentData = {
       userId: createUser?.id,
@@ -33,7 +46,7 @@ const registerUserIntoDB = async (payload: User & { age: number }) => {
     await transactionClient.student.create({
       data: studentData,
     });
-    return createUser;
+    return studentData;
   });
   return result;
 };

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Manik Sarker\\Learn\\fly-nest\\logs\\winston\\successes\\.0a1202c35af0e831bb008ff7d2a491426a987c4e-audit.json",
+    "files": [
+        {
+            "date": 1756207044564,
+            "name": "D:\\Manik Sarker\\Learn\\fly-nest\\logs\\winston\\successes\\phu-2025-26-08-17-success.log",
+            "hash": "17707ff1847a6836f1f80b7bfc7bcc6ae3b3a80f84a52e0200489ca091e8f4eb"
+        }
+    ],
+    "hashType": "sha256"
+}

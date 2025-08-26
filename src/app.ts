@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(urlencoded({ extended: true }));
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Flat share is available");
+  res.send("Fly Nest Server is Running...");
 });
 
 app.use("/api", router);

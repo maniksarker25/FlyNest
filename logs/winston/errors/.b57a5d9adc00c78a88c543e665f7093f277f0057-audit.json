@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Manik Sarker\\Learn\\fly-nest\\logs\\winston\\errors\\.b57a5d9adc00c78a88c543e665f7093f277f0057-audit.json",
+    "files": [
+        {
+            "date": 1756207044566,
+            "name": "D:\\Manik Sarker\\Learn\\fly-nest\\logs\\winston\\errors\\phu-2025-26-08-17-error.log",
+            "hash": "7f2041eec2e0f8007e30cab7883e4a4b19bafb93f002dce5a1f7003c3e623f87"
+        }
+    ],
+    "hashType": "sha256"
+}
